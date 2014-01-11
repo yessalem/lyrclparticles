@@ -1,7 +1,7 @@
 processing.data.Table lyrics;
 int lyricindex = 0;
 void loadLyrics() {
-  lyrics = loadTable("trueloves.csv", "header");
+  lyrics = loadTable("arabic.csv", "header");
 }
 
 String getNextLyric() {
