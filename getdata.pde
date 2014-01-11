@@ -1,7 +1,7 @@
 processing.data.Table lyrics;
 int lyricindex = 0;
 void loadLyrics() {
-  lyrics = loadTable("arabic.csv", "header");
+  lyrics = loadTable("trueloves.csv", "header");
 }
 
 String getNextLyric() {
@@ -38,3 +38,22 @@ int[] getFrameTimingData() {
   return timing; 
 }
 
+void getMusicData() {
+  if (leftbuffer == null) {
+    buffersize = in.bufferSize();
+    //print(buffersize);
+    leftbuffer = new float[buffersize];
+    rightbuffer = new float[buffersize];
+    mixbuffer = new float[buffersize];
+  }
+
+  for (int i = 0; i < buffersize; i++) {
+    leftbuffer[i] = in.left.get(i);
+    //println(in.left.get(i));
+    rightbuffer[i] = in.right.get(i);
+    //println(in.right.get(i));
+
+    mixbuffer[i] = in.left.get(i)/in.left.level();
+    //println(in.right.get(i));
+  }
+}
